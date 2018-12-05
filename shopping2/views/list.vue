@@ -1,14 +1,14 @@
 <template>
     <div v-show="list.length">
         <div class="list-control">
-            <div class="list-xontrol-filter">
+            <div class="list-control-filter">
                 <span>品牌: </span>
                 <span class="list-control-filter-item"
                 :class="{on: filterBrand === item}"
                 @click="handleFilterBrand(item)"
                 v-for="item in brands ">{{item}}</span>
             </div>
-            <div class="list-xontrol-filter">
+            <div class="list-control-filter">
                 <span>颜色: </span>
                 <span class="list-control-filter-item"
                 :class="{on: filterColor === item}"

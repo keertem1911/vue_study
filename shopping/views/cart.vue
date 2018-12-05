@@ -1,7 +1,7 @@
 <template>
     <div class="cart">
         <div class="cart-header">
-            <div class="cart-header-title">购物清单</div>
+            <div class="cart-header-title">购物车清单</div>
             <div class="cart-header-main">
                 <div class="cart-info">商品信息</div>
                 <div class="cart-price">单价</div>
@@ -11,23 +11,23 @@
             </div>
         </div>
         <div class="cart-content">
-            <div class="cart-content-main" v-for="(item, index) in cartList">
-                <div class="cart-info">
-                    <img :src="productDictList[item.id].image">
-                    <span>{{ productDictList[item.id].name }}</span>
+                <div class="cart-content-main" v-for="(item, index) in cartList">
+                    <div class="cart-info">
+                        <img :src="productDictList[item.id].image">
+                        <span>{{ productDictList[item.id].name }}</span>
+                    </div>
+                    <div class="cart-price">¥ {{ productDictList[item.id].cost }}</div>
+                    <div class="cart-count">
+                        <span class="cart-control-minus" @click="handleCount(index, -1)">-</span>
+                        {{ item.count }}
+                        <span class="cart-control-add" @click="handleCount(index, 1)">+</span>
+                    </div>
+                    <div class="cart-cost">¥ {{ productDictList[item.id].cost * item.count }}</div>
+                    <div class="cart-delete">
+                        <span class="cart-control-delete" @click="handleDelete(index)">删除</span>
+                    </div>
                 </div>
-                <div class="cart-price">¥ {{ productDictList[item.id].cost }}</div>
-                <div class="cart-count">
-                    <span class="cart-control-minus" @click="handleCount(index, -1)">-</span>
-                    {{ item.count }}
-                    <span class="cart-control-add" @click="handleCount(index, 1)">+</span>
-                </div>
-                <div class="cart-cost">¥ {{ productDictList[item.id].cost * item.count }}</div>
-                <div class="cart-delete">
-                    <span class="cart-control-delete" @click="handleDelete(index)">删除</span>
-                </div>
-            </div>
-            <div class="cart-empty" v-if="!cartList.length">购物车为空</div>
+                <div class="cart-empty" v-if="!cartList.length">购物车为空</div>
         </div>
         <div class="cart-promotion" v-show="cartList.length">
             <span>使用优惠码：</span>
